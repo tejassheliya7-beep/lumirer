@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury Jewellery Color System */
+    --background: 40 33% 99%;
+    --foreground: 0 0% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    /* Rich Gold - Primary brand color */
+    --primary: 43 72% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm Ivory - Secondary surfaces */
+    --secondary: 40 50% 97%;
+    --secondary-foreground: 0 0% 12%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Soft Gold Accent */
+    --accent: 43 50% 90%;
+    --accent-foreground: 43 72% 35%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 43 72% 52%;
+
+    --radius: 0.25rem;
+
+    /* Extended palette */
+    --gold: 43 72% 52%;
+    --gold-light: 43 60% 70%;
+    --gold-dark: 43 72% 35%;
+    --ivory: 40 50% 97%;
+    --cream: 40 33% 95%;
+    --charcoal: 0 0% 12%;
+    --charcoal-light: 0 0% 25%;
+
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 43 72% 52%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 43 40% 20%;
+    --accent-foreground: 43 72% 70%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 72% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply font-medium tracking-tight;
+  }
+}
+
+@layer components {
+  /* Luxury button styles */
+  .btn-luxury {
+    @apply relative overflow-hidden bg-primary text-primary-foreground px-8 py-4 text-sm uppercase tracking-[0.2em] font-medium;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:shadow-lg hover:shadow-primary/20;
+  }
+
+  .btn-luxury::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    @apply -translate-x-full transition-transform duration-700;
+  }
+
+  .btn-luxury:hover::before {
+    @apply translate-x-full;
+  }
+
+  .btn-outline-luxury {
+    @apply border border-charcoal text-charcoal px-8 py-4 text-sm uppercase tracking-[0.2em] font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-charcoal hover:text-white;
+  }
+
+  /* Gold underline animation */
+  .gold-underline {
+    @apply relative;
+  }
+
+  .gold-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-primary;
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .gold-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Product card hover */
+  .product-card {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .product-card:hover {
+    @apply shadow-xl shadow-black/5;
+    transform: translateY(-4px);
+  }
+
+  .product-card:hover .product-image {
+    @apply scale-105;
+  }
+
+  /* Luxury text gradient */
+  .text-gold-gradient {
+    @apply bg-gradient-to-r from-[hsl(43,72%,45%)] via-[hsl(43,72%,60%)] to-[hsl(43,72%,45%)] bg-clip-text text-transparent;
+  }
+
+  /* Slow fade animations */
+  .fade-in-slow {
+    animation: fadeInSlow 0.8s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+}
+
+@layer utilities {
+  /* Luxury spacing */
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+
+  .container-luxury {
+    @apply max-w-7xl mx-auto px-6 md:px-12;
+  }
+
+  /* Gold border accent */
+  .border-gold-accent {
+    @apply border-primary/30;
+  }
+}
+
+@keyframes fadeInSlow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)) 0%,
+    hsl(43, 72%, 65%) 50%,
+    hsl(var(--primary)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}

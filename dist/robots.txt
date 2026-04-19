@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block admin from search engines
+Disallow: /admin
+Disallow: /admin/

@@ -1,0 +1,3 @@
+
+admin pannel link is : https://lumirerjewel.netlify.app/admin
+user pannel link is: https://lumirerjewel.netlify.app/
